@@ -1,0 +1,23 @@
+<h1>User info</h1>
+<div class="col-xs-3" style="background-color: white;">
+  <table class = "table table-striped">
+    <%= form_for(@user)do |f| %>
+     <%= render 'shared/error_messages_user' %>
+      <tr>
+        <th>Name  <%= f.text_field :name %></th>
+      </tr>
+	  <tr>
+	    <th><%= attachment_image_tag @user, :profile_image,
+	    class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "60x60" %></th>
+	  </tr>
+	  <tr>
+	    <th><%= f.attachment_field :profile_image, placeholder: "プロフィール画像",class: "user-edit-form" %></th>
+	  </tr>
+	  <tr>
+	    <th>introduction : <%= f.text_area :introduction %></th>
+	  </tr>
+	  <tr>
+	    <th><%= f.submit 'Update User' %></th>
+	  </tr>
+	<% end %>
+  </table>

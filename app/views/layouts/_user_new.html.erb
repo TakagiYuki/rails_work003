@@ -1,0 +1,18 @@
+<!---------------user情報---------------->
+
+ <div class="container">
+  <div class="row">
+    <div class="col-xs-3" style="background-color: white;">
+      <h3>User info</h3>
+      <table class = "table table-striped">
+        <%= attachment_image_tag user, :profile_image,  format: 'png',class: "img-circle pull-left profile-img", fallback: "no_image.jpg",size: "60x60" %>
+          <tr>
+            <th>name:</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction:</th> 
+            <th><%= user.introduction %></th>
+          </tr>
+      </table>
+        <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-default" %>

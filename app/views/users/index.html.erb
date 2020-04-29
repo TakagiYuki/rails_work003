@@ -1,0 +1,26 @@
+<!---------------User画面---------------->
+<h3>users index</h3>
+<!---------------user情報---------------->
+ <%= render 'layouts/user_new', user: current_user %>
+<!---------------User一覧---------------->
+<%= render 'layouts/book_new', book: @book %>
+
+<h3>Users</h3>
+
+<div class="col-xs-9" style="background-color: white;"> 
+    <table class = "table">
+    <tr>
+      <th>image</th>
+      <th>name</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr> 
+        <td><%= attachment_image_tag user, :profile_image,  format: 'png',
+                class: "img-circle pull-left profile-img", fallback: "no_image.jpg",size: "60x60" %></td>
+        <td><%= user.name %><td>
+        <td><%= link_to 'Show', user_path(user.id) %><td>
+      </tr>
+    <% end %>
+  </table>
+  </div>s
+</div>

@@ -1,0 +1,32 @@
+<!--edit destroy画面-->
+<h3>Book detail</h3>
+<h3><%= flash[:success] %></h3>
+<!---------------user情報---------------->
+ <%= render 'layouts/user_new', user: current_user %>
+
+<!---------------Book作成---------------->
+<%= render 'layouts/book_new', book:Book.new %>
+
+<!--------------Show Edit-------->
+    <h3>books show</h3>
+    <div class="col-xs-9" style="background-color: white;">
+    <table class = "table table-striped">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+      <tr>
+        <td><%= attachment_image_tag @book.user, :profile_image,  format: 'png',class: "img-circle pull-left profile-img", fallback: "no_image.jpg",size: "60x60"%></td>
+        <td><%= @book.title %></th>
+        <td><%= @book.body %></th>
+      <% if current_user.id == @book.user.id %>
+        <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-default"%></td>
+        <td><%= link_to "Destroy", @book, method: :delete, class: "btn btn-default" %></td>
+      <% end %>
+      </tr>
+    </table>
+
+<%= link_to @book.user.name, user_path(@book.user.id) %>
+</div>
+</div>

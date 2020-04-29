@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      Bookers
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+              <!--ログイン後-->
+              <% if user_signed_in? %>
+                <li><%= link_to 'Home', user_path(current_user) %></li>
+                <li><%= link_to 'Users', users_path %></li>
+                <li><%= link_to 'Books', books_path %></li>
+                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+              <!--ログイン前-->
+              <% else %>
+                <li><%= link_to 'Home', root_path %></li>
+                <li><%= link_to 'About', home_about_path %></li>
+                <li><%= link_to 'sign up', new_user_registration_path  %></li>
+                <li><%= link_to 'login', new_user_session_path  %></li>
+              <% end %>
+        </ul>
+      </nav>
+    </div>
+   </header>
+    <p class="notice"><%= notice %></p> <!--追記-->
+    <p class="alert"><%= alert %></p> <!--追記-->
+    <%= yield %>
+  </body>
+</html>
